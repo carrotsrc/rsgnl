@@ -15,32 +15,19 @@ extern "C" {
     fn genlmsg_hdr(hdr: *const nlmsghdr) -> *const genlmsghdr;
 }
 
-
-
 // leaky!
 pub struct GenlHeader {
     ptr: *const genlmsghdr,
 }
 
 pub fn valid_hdr(msg: &NetlinkMessage, hdrlen: i32) -> i32 {
-    let hdrptr = match nlmsghdr_ptr(msg) {
-        Some(hdr) => hdr,
-        None => return 1
-    };
+    let hdrptr = nlmsghdr_ptr(msg);
 
     unsafe { genlmsg_valid_hdr(hdrptr, hdrlen) }
 }
 
-pub fn hdr(msg: &NetlinkMessage) -> Option<GenlHeader> {
-
-    let hdrptr = match nlmsghdr_ptr(msg) {
-        Some(hdr) => hdr,
-        None => return None
-    };
-
-    Some(
-        GenlHeader {
-            ptr: unsafe { genlmsg_hdr(hdrptr) }
-        }
-    )
+pub fn hdr(msg: &NetlinkMessage) -> GenlHeader {
+    GenlHeader {
+        ptr: unsafe { genlmsg_hdr(nlmsghdr_ptr(msg)) }
+    }
 }

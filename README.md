@@ -14,4 +14,4 @@ The reasoning is to keep the original layout of libnl and libnl-genl. This means
 
 #### License
 
-Out of respect to Libnl, the library is licensed under LGPL
+MIT

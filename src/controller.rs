@@ -12,6 +12,6 @@ extern "C" {
 }
 
 
-pub fn resolve(sock: &NetlinkSocket, name: &str) -> i32 {
+pub fn resolve(sock: &NetlinkSocket, name: *const str) -> i32 {
     unsafe { genl_ctrl_resolve(nl_sock_ptr(sock), name) }
 }

@@ -2,3 +2,6 @@
 name = "rsgnl"
 version = "0.1.0"
 authors = ["Charlie FG <cfg@zunautica.org>"]
+
+[dependencies.rsnl]
+git = "https://github.com/carrotsrc/rsnl"

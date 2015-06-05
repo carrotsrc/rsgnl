@@ -3,9 +3,15 @@ extern crate rsnl;
 extern crate rsgnl;
 
 fn main() {
-    let sock = rsnl::socket::alloc();
+    let mut nls = rsnl::socket::alloc().unwrap();
 
-    let p = rsgnl::socket::connect(&mut sock.unwrap());
+    let p = rsgnl::socket::connect(&mut nls);
 
-    println!("{}", p);
+    let s=  "nl80211";
+
+    let family = rsgnl::controller::resolve(&nls, s);
+    println!("Family Index: {}", family);
+
+    // connect the socket to generic netlink
+    
 }

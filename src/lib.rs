@@ -6,3 +6,4 @@ extern crate rsnl;
 
 pub mod socket;
 pub mod message;
+pub mod controller;

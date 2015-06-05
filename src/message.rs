@@ -10,7 +10,6 @@ struct genlmsghdr;
 
 #[link(name="nl-genl-3")]
 extern "C" {
-	// Exposed socket functions
     fn genlmsg_valid_hdr(hdr: *const nlmsghdr, hdrlen: c_int) -> i32;
     fn genlmsg_hdr(hdr: *const nlmsghdr) -> *const genlmsghdr;
 }

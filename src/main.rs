@@ -3,8 +3,9 @@ extern crate rsnl;
 extern crate rsgnl;
 
 fn main() {
-    let mut sock = rsnl::socket::alloc();
-    let p = rsgnl::socket::connect(&mut sock);
+    let sock = rsnl::socket::alloc();
+
+    let p = rsgnl::socket::connect(&mut sock.unwrap());
 
     println!("{}", p);
 }
